@@ -1,0 +1,85 @@
+{
+    "name": "emincimen/dummy-api",
+    "description": "This is my package dummyapi",
+    "keywords": [
+        "EminCimen",
+        "laravel",
+        "dummyapi"
+    ],
+    "homepage": "https://github.com/emincimen/dummyapi",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "EminCimen",
+            "email": "memincimen0@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": "^10.0",
+        "spatie/laravel-data": "*",
+        "spatie/laravel-package-tools": "^1.14.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^7.8",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^8.8",
+        "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-arch": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "spatie/laravel-ray": "^1.26",
+        "squizlabs/php_codesniffer": "4.0.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "EminCimen\\DummyApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EminCimen\\DummyApi\\Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@composer run prepare",
+        "clear": "@php vendor/bin/testbench package:purge-dummyapi --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": [
+            "@composer run prepare",
+            "@php vendor/bin/testbench workbench:build --ansi"
+        ],
+        "start": [
+            "Composer\\Config::disableProcessTimeout",
+            "@composer run build",
+            "@php vendor/bin/testbench serve"
+        ],
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EminCimen\\DummyApi\\DummyApiServiceProvider"
+            ],
+            "aliases": {
+                "DummyApi": "EminCimen\\DummyApi\\Facades\\DummyApi"
+            }
+        }
+    },
+    "prefer-stable": false,
+    "minimum-stability": "dev"
+}
