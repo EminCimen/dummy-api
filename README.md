@@ -3,7 +3,7 @@
 You can install the package via composer:
 
 ```bash
-composer require emincimen/dummy-api
+composer require --dev emincimen/dummy-api:dev-main
 ```
 
 ## Usage
