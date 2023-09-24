@@ -20,40 +20,20 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the package via composer:
 
 ```bash
-composer require emincimen/dummyapi
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="dummyapi-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="dummyapi-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="dummyapi-views"
+composer require emincimen/dummy-api
 ```
 
 ## Usage
 
 ```php
-$dummyApi = new EminCimen\DummyApi();
-echo $dummyApi->echoPhrase('Hello, EminCimen!');
+use EminCimen\DummyApi\Facades\DummyApi;
+
+echo DummyApi::getPaginatedUserList(2);
+echo DummyApi::getSingleUser(2);
+echo DummyApi::createUser([
+    'name' => 'Emin Cimen',
+    'job' => 'Software Developer'
+]);
 ```
 
 ## Testing
@@ -62,22 +42,9 @@ echo $dummyApi->echoPhrase('Hello, EminCimen!');
 composer test
 ```
 
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
 ## Credits
 
 - [EminCimen](https://github.com/EminCimen)
-- [All Contributors](../../contributors)
 
 ## License
 
